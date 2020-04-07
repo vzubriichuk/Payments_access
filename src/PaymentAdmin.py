@@ -1,13 +1,20 @@
+#!/usr/bin/env python
+# coding:utf-8
+"""
+Author : Vitaliy Zubriichuk
+Contact : v@zubr.kiev.ua
+Time    : 12.03.2020 20:01
+"""
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
 from db_conn import DBConnect
 from gui.mainWindow import Ui_MainWindow
-import sys
-import os
 from pyodbc import Error as SQLError
 from log_error import writelog
 from singleinstance import Singleinstance
-from win32api import CloseHandle, GetLastError
+import sys
+import os
+
 
 server = 's-kv-center-s59'
 db = 'AnalyticReports'
@@ -53,17 +60,6 @@ def _get_people_group_id():
     with DBConnect(server, db) as sql:
         return sql.get_people_group_id()
 
-
-# # for debug
-# def _get_user_info2():
-#     with DBConnect(server, db) as sql:
-#         UserInfo = sql.get_user_info('Зубрійчук Віталій Андрійович')
-#         return UserInfo
-#
-#
-# info_user = _get_user_info2()
-# print(info_user)
-# # end for debug
 
 class PopupInfoWindows(QWidget):
     def __init__(self):
@@ -289,9 +285,14 @@ class PaymentAdminApp(QtWidgets.QMainWindow, Ui_MainWindow, PopupInfoWindows):
             UserCurrentInfo = sql.get_active_user_info(self.ActiveUserID)
             # print(UserCurrentInfo)
             if UserCurrentInfo[0] == 0:
+                self.lineEdit_AccessType.setText('Нет доступа')
+            elif UserCurrentInfo[0] == 1:
                 self.lineEdit_AccessType.setText('Создание')
-            else:
+            elif UserCurrentInfo[0] == 2:
                 self.lineEdit_AccessType.setText('Утверждение')
+            else:
+                self.lineEdit_AccessType.setText('Архивный статус')
+
             if UserCurrentInfo[1] == 0:
                 self.lineEdit_isSuperUser.setText('Нет')
             else:
@@ -300,6 +301,7 @@ class PaymentAdminApp(QtWidgets.QMainWindow, Ui_MainWindow, PopupInfoWindows):
                 str(UserCurrentInfo[2]))
             self.lineEdit_userCreateRequestLimit_Update.setText(
                 str(UserCurrentInfo[2]))
+
             if UserCurrentInfo[3] == 0:
                 self.lineEdit_resetCreateRequestLimit.setText('Нет')
             else:
@@ -331,9 +333,9 @@ class PaymentAdminApp(QtWidgets.QMainWindow, Ui_MainWindow, PopupInfoWindows):
         UserID = self.ActiveUserID
 
         if self.comboBox_AccessType.currentText() == 'Создание':
-            AccessType = 0
-        elif self.comboBox_AccessType.currentText() == 'Утверждение':
             AccessType = 1
+        elif self.comboBox_AccessType.currentText() == 'Утверждение':
+            AccessType = 2
         else:
             AccessType = None
         if self.comboBox_isSuperUser.currentText() == 'Нет':

@@ -1,3 +1,10 @@
+#!/usr/bin/env python
+# coding:utf-8
+"""
+Author : Vitaliy Zubriichuk
+Contact : v@zubr.kiev.ua
+Time    : 18.03.2020 09:43
+"""
 import sys
 
 from PyQt5.QtCore import Qt, QEvent, QRect, QTimer

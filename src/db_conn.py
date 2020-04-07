@@ -1,3 +1,10 @@
+#!/usr/bin/env python
+# coding:utf-8
+"""
+Author : Vitaliy Zubriichuk
+Contact : v@zubr.kiev.ua
+Time    : 12.03.2020 20:26
+"""
 import pyodbc
 from pyodbc import Error as SQLError
 from log_error import writelog
@@ -113,10 +120,10 @@ class DBConnect:
             self.__db.commit()
 
     def admin_change_active_user_info(self, UserID, AccessType, isSuperUser,
-                                userCreateRequestLimit_Update,
-                                resetCreateRequestLimit,
-                                userApproveNeededLimit_Update, GroupID,
-                                PayConditionsID):
+                                      userCreateRequestLimit_Update,
+                                      resetCreateRequestLimit,
+                                      userApproveNeededLimit_Update, GroupID,
+                                      PayConditionsID):
         query = '''
         exec payment.admin_change_active_user_info 
                               @UserID = ?,
@@ -134,7 +141,6 @@ class DBConnect:
                               userApproveNeededLimit_Update, GroupID,
                               PayConditionsID)
         self.__db.commit()
-
 
     def admin_get_user_objects(self, UserID):
         query = '''
@@ -159,6 +165,3 @@ class DBConnect:
         '''
         self.__cursor.execute(query, UserID, ObjectID)
         self.__db.commit()
-
-
-

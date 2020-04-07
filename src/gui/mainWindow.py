@@ -19,8 +19,8 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
         MainWindow.setSizePolicy(sizePolicy)
-        MainWindow.setMinimumSize(QtCore.QSize(0, 0))
-        MainWindow.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        MainWindow.setMinimumSize(QtCore.QSize(627, 583))
+        MainWindow.setMaximumSize(QtCore.QSize(627, 583))
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.groupBox_1_tab = QtWidgets.QGroupBox(self.centralwidget)
@@ -404,8 +404,6 @@ class Ui_MainWindow(object):
         self.tableWidget.setMinimumSize(QtCore.QSize(571, 0))
         font = QtGui.QFont()
         font.setPointSize(-1)
-        font.setBold(False)
-        font.setWeight(50)
         self.tableWidget.setFont(font)
         self.tableWidget.setStyleSheet("font-size:11px;\n"
 "\n"
@@ -623,7 +621,7 @@ class Ui_MainWindow(object):
         self.menubar.setFont(font)
         self.menubar.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.menubar.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.menubar.setAutoFillBackground(True)
+        self.menubar.setAutoFillBackground(False)
         self.menubar.setStyleSheet("background:#f1f1f1;")
         self.menubar.setNativeMenuBar(True)
         self.menubar.setObjectName("menubar")
