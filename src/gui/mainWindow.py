@@ -726,7 +726,7 @@ class Ui_MainWindow(object):
         self.label_6.setText(_translate("MainWindow", "Должность"))
         self.label_12.setText(_translate("MainWindow", "Наличие доступа"))
         self.button_run_task.setText(_translate("MainWindow", "Выполнить"))
-        self.label_14.setText(_translate("MainWindow", "Версия 0.7"))
+        self.label_14.setText(_translate("MainWindow", "Версия 0.8"))
         self.menu.setTitle(_translate("MainWindow", "Инструкция"))
         self.action.setText(_translate("MainWindow", "Открыть файл"))
 from check_combobox import CheckComboBox

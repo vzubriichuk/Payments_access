@@ -35,6 +35,7 @@ class DBConnect:
             'Trusted_Connection=yes;'.format(self._server, self._db)
         )
         self.__db = pyodbc.connect(conn_str)
+        self.__db.autocommit = True
         self.__cursor = self.__db.cursor()
         return self
 

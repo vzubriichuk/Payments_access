@@ -1,0 +1,15 @@
+14-05-2020 22:34:38 ('42000', "[42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Incorrect syntax near ')'. (102) (SQLExecDirectW)")
+14-05-2020 22:34:38 ('HY000', 'The driver did not supply an error!')
+05-02-2021 12:20:39 'DBConnect' object has no attribute 'get_users'
+05-02-2021 12:21:24 'DBConnect' object has no attribute 'get_users'
+04-05-2021 18:54:28 'PaymentAdminApp' object has no attribute '_run_buttons_task'
+11-08-2021 08:35:12 ('HY000', 'The driver did not supply an error!')
+11-08-2021 08:35:30 ('HY000', 'The driver did not supply an error!')
+11-08-2021 08:36:54 ('HY000', 'The driver did not supply an error!')
+11-08-2021 08:36:58 ('HY000', 'The driver did not supply an error!')
+11-08-2021 08:38:01 ('HY000', 'The driver did not supply an error!')
+11-08-2021 08:39:03 ('HY000', 'The driver did not supply an error!')
+11-08-2021 08:39:14 ('HY000', 'The driver did not supply an error!')
+11-08-2021 08:40:54 ('HY000', 'The driver did not supply an error!')
+11-08-2021 08:43:20 ('HY000', 'The driver did not supply an error!')
+11-08-2021 08:52:41 ('42000', "[42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Incorrect syntax near ')'. (102) (SQLExecDirectW)")

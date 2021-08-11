@@ -17,7 +17,7 @@ import os
 
 
 server = 's-kv-center-s59'
-db = 'AnalyticReports'
+db = 'LogisticFinance'
 
 
 class Error(Exception):
@@ -109,7 +109,7 @@ class PaymentAdminApp(QtWidgets.QMainWindow, Ui_MainWindow, PopupInfoWindows):
     def __init__(self):
         super().__init__()
         self.setupUi(self)  # Это нужно для инициализации нашего дизайна
-        self.setWindowIcon(QtGui.QIcon('resources/payment_admin.png'))
+        self.setWindowIcon(QtGui.QIcon('resources/admin.png'))
         # Global list of users
         users = dict(_get_users())
 
@@ -366,7 +366,7 @@ class PaymentAdminApp(QtWidgets.QMainWindow, Ui_MainWindow, PopupInfoWindows):
                                               GroupID, PayConditionsID)
 
     # ----------------------------
-    # toolBox page_2 actions
+    # toolBox page_2 actions (add MVZ to user)
     # ----------------------------
     def _admin_get_user_objects(self):
         self.tableWidget.removeRow(0)
@@ -391,6 +391,7 @@ class PaymentAdminApp(QtWidgets.QMainWindow, Ui_MainWindow, PopupInfoWindows):
             self.tableWidget.setItem(row, 0, item)
 
             # insert values into table
+            # print(allRows)
             rows = 0
             for tup in allRows:
                 col = 1
@@ -429,6 +430,7 @@ class PaymentAdminApp(QtWidgets.QMainWindow, Ui_MainWindow, PopupInfoWindows):
                 if self.tableWidget.item(i, 1).text() != self.tableWidget.item(i, 4).text():
                     ObjectID.append(self.tableWidget.item(i, 1).text())
         ListObjectID = ', '.join(ObjectID)
+        print(ObjectID)
         try:
             with DBConnect(server, db) as sql:
                 sql.add_mvz_to_user(self.ActiveUserID, ListObjectID)
@@ -440,7 +442,7 @@ class PaymentAdminApp(QtWidgets.QMainWindow, Ui_MainWindow, PopupInfoWindows):
                     self.popup_add_mvz_error()
 
     # ----------------------------
-    # toolBox page_3 actions
+    # toolBox page_3 actions (remove MVZ from user)
     # ----------------------------
     def _admin_get_user_objects_del(self):
         self.tableWidget2.removeRow(0)
@@ -504,7 +506,7 @@ class PaymentAdminApp(QtWidgets.QMainWindow, Ui_MainWindow, PopupInfoWindows):
                         i, 4).text():
                     ObjectID.append(self.tableWidget2.item(i, 1).text())
         ListObjectID = ', '.join(ObjectID)
-        # print(str(ListObjectID))
+        print(str(ListObjectID))
         try:
             with DBConnect(server, db) as sql:
                 sql.remove_mvz_from_user(self.ActiveUserID, ListObjectID)
@@ -514,7 +516,6 @@ class PaymentAdminApp(QtWidgets.QMainWindow, Ui_MainWindow, PopupInfoWindows):
             for i in error.args[0].split():
                 if i == '42000':
                     self.popup_remove_mvz_from_user_error()
-
 
     # runs buttons for every task
     def _run_buttons_task(self):
